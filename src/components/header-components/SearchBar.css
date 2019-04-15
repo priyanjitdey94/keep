@@ -1,0 +1,35 @@
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: #f1f3f4;
+    height: 90%;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.search-box {
+    width: 90%;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: left;
+    outline: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.search-icon {
+    padding-top: 12px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hidden-icon {
+    visibility: hidden;
+}

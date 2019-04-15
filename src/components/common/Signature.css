@@ -1,0 +1,17 @@
+.signature-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signature-logo {
+    width: 70%;
+    height: 70%;
+    min-width: 40%;
+    min-height: 40%;
+}
+
+.signature-text {
+    font-size: 22px;
+}
