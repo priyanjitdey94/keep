@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SearchIcon extends Component {
+class SearchButton extends Component {
     render () {
         return (
             <>
@@ -13,4 +13,4 @@ class SearchIcon extends Component {
     };
 }
 
-export default SearchIcon;
+export default SearchButton;

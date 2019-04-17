@@ -3,6 +3,8 @@ import Signature from './common/Signature';
 import MenuIcon from './common/MenuIcon';
 import SearchBar from './header-components/SearchBar';
 import './Header.css';
+import OptionBar from './header-components/OptionBar';
+import User from './header-components/User';
 
 class Header extends Component {
     render () {
@@ -14,6 +16,10 @@ class Header extends Component {
                 </div>
                 <div className='header-item header-center'>
                     <SearchBar />
+                    <OptionBar />
+                </div>
+                <div className='header-item header-right'>
+                    <User />
                 </div>
             </div>
         );

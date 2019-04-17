@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchIcon from '../common/SearchIcon';
+import SearchButton from '../common/SearchButton';
 import './SearchBar.css';
 
 class SearchBar extends Component {
@@ -7,11 +7,11 @@ class SearchBar extends Component {
         return (
             <div className='search-bar'>
                 <div className='search-icon'>
-                    <SearchIcon />
+                    <SearchButton />
                 </div>
                 <div className='search-box' contentEditable="true" spellCheck="false"></div>
                 <div className='search-icon hidden-icon'>
-                    <SearchIcon />
+                    <SearchButton />
                 </div>
             </div>
         );

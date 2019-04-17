@@ -1,23 +1,32 @@
 .header-base {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #dadce0;
-    height: 7.5vh;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    /* height: 7.5vh; */
 }
 
 .header-item {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .header-left {
-    width: 12%;
+    width: 15%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header-right {
+    width: 10%;
 }
 
 .header-center {
-    width: 52%;
+    width: 80%;
+    justify-content: space-between;
 }
