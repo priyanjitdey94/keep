@@ -6,6 +6,10 @@
     border-bottom: 1px solid #dadce0;
     padding-bottom: 10px;
     padding-top: 10px;
+    position: fixed;
+    width: 100vw;
+    background-color: white;
+    z-index: 100;
     /* height: 7.5vh; */
 }
 

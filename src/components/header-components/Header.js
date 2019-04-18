@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Signature from './common/Signature';
-import MenuIcon from './common/MenuIcon';
-import SearchBar from './header-components/SearchBar';
+import Signature from '../common/Signature';
+import MenuIcon from '../common/MenuIcon';
+import SearchBar from './SearchBar';
 import './Header.css';
-import OptionBar from './header-components/OptionBar';
-import User from './header-components/User';
+import OptionBar from './OptionBar';
+import User from './User';
 
 class Header extends Component {
     render () {
