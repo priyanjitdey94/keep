@@ -5,11 +5,16 @@
     max-height: 340px;
     text-align: left;
     border: 1px solid #dadce0;
-    padding: 8px 16px 0px 16px;
+    padding: 8px 16px 8px 16px;
     border-radius: 10px;
     background-color: white;
     margin: 16px;
     white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.tile-container:hover {
+    box-shadow: 0px 0px 2px 2px #ff0000;
+    transition: box-shadow 0.2s ease-in-out;
 }

@@ -10,7 +10,7 @@ const smartlabel = new Smartlabel(),
     TILEWIDTH = WIDTH + 2 * PADDING,
     HEIGHT = 22.5,
     MARGIN = 48,
-    HEIGHT_SPACING = 12 + 16,
+    HEIGHT_SPACING = 16 + 16 + 16,
     CSTYLE = {
         width: (242 * 5 + 16 * 6) + 'px'
     };
@@ -105,7 +105,7 @@ class MosaicLayout extends Component {
                 <Tile
                     key={i}
                     width={TILES[i].width}
-                    height={TILES[i].height}
+                    height={TILES[i].height + 16}
                     text={TILES[i].oriText}
                     transform={`translate(${tx}px, ${ty}px)`}
                 />
