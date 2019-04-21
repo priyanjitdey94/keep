@@ -1,9 +1,15 @@
 .tile-container {
+    display: block;
     position: absolute;
-    width: 240px;
-    height: 240px;
+    line-height: 22.5px;
+    max-height: 340px;
+    text-align: left;
     border: 1px solid #dadce0;
+    padding: 8px 16px 0px 16px;
     border-radius: 10px;
     background-color: white;
     margin: 16px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -10,7 +10,7 @@ export class Tile extends Component {
       }
     return (
       <div className='tile-container' style={style}>
-        
+        {this.props.text}
       </div>
     )
   }
