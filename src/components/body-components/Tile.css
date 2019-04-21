@@ -12,6 +12,7 @@
     white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: transform 0.5s ease-in-out;
 }
 
 .tile-container:hover {
