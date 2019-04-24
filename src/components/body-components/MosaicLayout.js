@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './MosaicLayout.css';
 import Tile from './Tile';
 import { connect } from 'react-redux';
 import Smartlabel from 'fusioncharts-smartlabel';
+import { TILEINNERWIDTH } from '../common/constants';
 
 const smartlabel = new Smartlabel(),
-    WIDTH = 210,
-    PADDING = 16,
-    TILEWIDTH = WIDTH + 2 * PADDING,
     HEIGHT = 22.5,
     MARGIN = 48,
-    HEIGHT_SPACING = 16 + 16 + 16,
-    CSTYLE = {
-        width: (242 * 5 + 16 * 6) + 'px'
-    };
+    HEIGHT_SPACING = 16 + 16 + 16;
 
 smartlabel.useEllipsesOnOverflow(true);
 smartlabel.setStyle({
@@ -21,56 +16,29 @@ smartlabel.setStyle({
     'font-family': 'Product Sans',
     'line-height': '22.5px'
 });
-class MosaicLayout extends Component {
+class MosaicLayout extends PureComponent {
     constructor (props) {
         super(props);
-
-        this.state = {
-            columnCount: undefined
-        };
 
         this.ref = React.createRef();
     }
 
     render () {
-        let tiles = this.generateTiles();
+        let tiles = this.generateTiles(),
+            { availableWidth } = this.props;
 
         return (
-            <div className='mosaic-container' style={CSTYLE} ref={this.ref}>
+            <div className='mosaic-container' style={{width: availableWidth + 'px'}} ref={this.ref}>
                 {tiles}
             </div>
         )
     }
 
-    componentDidMount () {
-        const mosaicLayout = this,
-            { current } = mosaicLayout.ref;
-
-        mosaicLayout.setState({
-            columnCount: Math.floor(current.offsetWidth / TILEWIDTH)
-        });
-
-        window.addEventListener('resize', () => {
-            let curColumnCount = Math.floor(current.offsetWidth / TILEWIDTH);
-
-            if (curColumnCount !== mosaicLayout.state.columnCount) {
-                mosaicLayout.setState({
-                    columnCount: curColumnCount
-                })
-            }
-        });
-    }
-
     generateTiles () {
-        if (!this.state.columnCount) {
-            return [];
-        }
-
-        const { notes } = this.props,
-            { columnCount } = this.state,
+        const { notes, columnCount } = this.props,
             TILES = notes.map(note => {
-                let sl =  smartlabel.getSmartText(note.text, WIDTH, 15 * HEIGHT);
-                sl.width = WIDTH;
+                let sl =  smartlabel.getSmartText(note.text, TILEINNERWIDTH, 15 * HEIGHT);
+                sl.width = TILEINNERWIDTH;
 
                 return sl;
             });
@@ -95,7 +63,7 @@ class MosaicLayout extends Component {
                     minHeight = buckets[j];
                 }
             }
-            tx = k * WIDTH + k * MARGIN;
+            tx = k * TILEINNERWIDTH + k * MARGIN;
             ty = minHeight + bucketContentCount[k] * HEIGHT_SPACING;
 
             buckets[k] += TILES[i].height;
