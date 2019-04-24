@@ -10,17 +10,17 @@ class Body extends Component {
         
         this.state = {
             availableWidth: props.availableWidth || 900,
-            sidebarWidth: 0,
+            sidebarWidth: 282,
             mosaicLayoutColumnCount: 3
         };
     }
     render () {
         let { sidebarWidth, mosaicLayoutColumnCount } = this.state,
             calculatedWidth = mosaicLayoutColumnCount * TILEWIDTH + (mosaicLayoutColumnCount + 1) * TILEPADDING;
-        
+
         return (
             <div className='body-container'>
-                {sidebarWidth > 0 ? <SideBar /> : ''}
+                {sidebarWidth > 0 ? <SideBar availableWidth={sidebarWidth} /> : ''}
                 <MosaicLayout
                     availableWidth={calculatedWidth}
                     columnCount={mosaicLayoutColumnCount}
@@ -58,6 +58,10 @@ class Body extends Component {
         layoutWidth = availableWidth - sidebarWidth;
 
         mosaicLayoutColumnCount = Math.floor(layoutWidth / TILEWIDTH);
+
+        if (mosaicLayoutColumnCount * TILEWIDTH + (mosaicLayoutColumnCount + 1) * TILEPADDING > availableWidth) {
+            mosaicLayoutColumnCount--;
+        }
 
         this.setState({
             availableWidth,
