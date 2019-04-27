@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SideBar.css';
-import { SIDEBAR_WIDTH } from '../common/constants';
+import { SIDEBAR_WIDTH, ICONS } from '../common/constants';
+import SideBarItem from './SideBarItem';
 
 class SideBar extends Component {
     constructor (props) {
@@ -24,7 +25,34 @@ class SideBar extends Component {
         }
         return (
             <div className={classNames} style={styleObj} ref={this.ref}>
-
+                <div className='sidebar-section'>
+                    <SideBarItem
+                        icon={ICONS.bulb()}
+                        label='Notes'
+                    />
+                    <SideBarItem
+                        icon={ICONS.bell()}
+                        label='Reminders'
+                    />
+                </div>
+                <div className='sidebar-separator'></div>
+                <div className='sidebar-section'>
+                    <SideBarItem
+                        icon={ICONS.pen()}
+                        label='Edit Labels'
+                    />
+                </div>
+                <div className='sidebar-separator'></div>
+                <div className='sidebar-section'>
+                    <SideBarItem
+                        icon={ICONS.archive()}
+                        label='Archive'
+                    />
+                    <SideBarItem
+                        icon={ICONS.trash()}
+                        label='Trash'
+                    />
+                </div>
             </div>
         );
     }
