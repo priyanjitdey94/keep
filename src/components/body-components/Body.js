@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import MosaicLayout from './MosaicLayout';
 import './Body.css';
-import { TILEWIDTH, TILEPADDING } from '../common/constants';
+import { TILEWIDTH, TILEPADDING, SIDEBAR_WIDTH } from '../common/constants';
 import SideBar from './SideBar';
+import { TOGGLE_SIDEBAR } from '../actions/action-types';
 
 class Body extends Component {
     constructor (props) {
@@ -10,17 +12,18 @@ class Body extends Component {
         
         this.state = {
             availableWidth: props.availableWidth || 900,
-            sidebarWidth: 282,
+            sidebarWidth: SIDEBAR_WIDTH,
             mosaicLayoutColumnCount: 3
         };
     }
     render () {
-        let { sidebarWidth, mosaicLayoutColumnCount } = this.state,
+        let { mosaicLayoutColumnCount } = this.state,
+            { sideBarVisibility } = this.props,
             calculatedWidth = mosaicLayoutColumnCount * TILEWIDTH + (mosaicLayoutColumnCount + 1) * TILEPADDING;
 
         return (
             <div className='body-container'>
-                {sidebarWidth > 0 ? <SideBar availableWidth={sidebarWidth} /> : ''}
+                <SideBar isVisible={sideBarVisibility} />
                 <MosaicLayout
                     availableWidth={calculatedWidth}
                     columnCount={mosaicLayoutColumnCount}
@@ -35,13 +38,17 @@ class Body extends Component {
     }
 
     _getDimensionInformation () {
-        let { availableWidth } = this.props,
+        let { availableWidth, toggleSideBar, sideBarVisibility } = this.props,
             {sidebarWidth} = this.state;
 
         availableWidth = +availableWidth || window.innerWidth;
 
-        if (availableWidth < 1000) {
+        if (availableWidth < 1100) {
+            toggleSideBar(false);
             sidebarWidth = 0;
+        } else if (!sideBarVisibility) {
+            toggleSideBar(true);
+            sidebarWidth = SIDEBAR_WIDTH;
         }
 
         return {
@@ -71,4 +78,21 @@ class Body extends Component {
     }
 }
 
-export default Body;
+const mapStateToProps = state => {
+    return {
+        sideBarVisibility: state.sideBarVisibility
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleSideBar: (sideBarVisibility) => {
+            dispatch({
+                type: TOGGLE_SIDEBAR,
+                sideBarVisibility
+            });
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body);

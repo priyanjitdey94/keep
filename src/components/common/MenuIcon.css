@@ -1,6 +1,13 @@
+.menu-icon-container {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+}
+
 .menu-icon {
     width: 22px;
     height: 2px;
     background-color: #5f6368;
-    margin: 4px 0;
+    margin: 4px 0px;
 }

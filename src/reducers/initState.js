@@ -17,4 +17,7 @@ const DEFAULT_TEXT = 'A quick brown fox jumps over a lazy dog.',
         };
     };
 
-export default defaultStateCreator(16);
+export default {
+    ...defaultStateCreator(16),
+    sideBarVisibility: true
+};
