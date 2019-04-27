@@ -24,10 +24,12 @@ class Body extends Component {
         return (
             <div className='body-container'>
                 <SideBar isVisible={sideBarVisibility} />
-                <MosaicLayout
-                    availableWidth={calculatedWidth}
-                    columnCount={mosaicLayoutColumnCount}
-                />
+                <div className='note-container' style={{width: calculatedWidth}}>
+                    <MosaicLayout
+                        availableWidth={calculatedWidth}
+                        columnCount={mosaicLayoutColumnCount}
+                    />
+                </div>
             </div>
         );
     }
